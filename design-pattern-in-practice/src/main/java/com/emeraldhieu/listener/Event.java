@@ -1,6 +1,6 @@
 package com.emeraldhieu.listener;
 
-public interface Event<H extends EventHandler> {
+public interface Event {
 
-    void dispatch(H eventHandler);
+    void dispatch(EventHandler eventHandler);
 }

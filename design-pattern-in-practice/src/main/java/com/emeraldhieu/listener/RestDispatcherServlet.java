@@ -1,21 +1,27 @@
 package com.emeraldhieu.listener;
 
-public class RestDispatcherServlet implements EndpointDefinitionRegistryEventHandler {
+import static com.emeraldhieu.listener.EndpointDefinitionRegistryEventHandler.*;
+
+public class RestDispatcherServlet implements OnRegisterHandler, OnUnregisterHandler {
 
     private final EventBus eventBus;
+    private final EndpointDefinitionRegistryEventHandler endpointDefinitionRegistryEventHandler;
 
     public RestDispatcherServlet(EventBus eventBus) {
         this.eventBus = eventBus;
-        this.eventBus.addHandler(EndpointDefinitionRegistryEvent.class, this);
+        this.endpointDefinitionRegistryEventHandler = new EndpointDefinitionRegistryEventHandler();
+        this.endpointDefinitionRegistryEventHandler.setOnRegisterHandler(this);
+        this.endpointDefinitionRegistryEventHandler.setOnUnregisterHandler(this);
+        this.eventBus.addHandler(EndpointDefinitionRegistryEvent.class, endpointDefinitionRegistryEventHandler);
     }
 
     @Override
-    public void onEndpointRegistered() {
+    public void onRegistered() {
         System.out.println("Creating an endpoint...");
     }
 
     @Override
-    public void onEndpointUnregistered() {
+    public void onUnregistered() {
         System.out.println("Removing an endpoint...");
     }
 }
