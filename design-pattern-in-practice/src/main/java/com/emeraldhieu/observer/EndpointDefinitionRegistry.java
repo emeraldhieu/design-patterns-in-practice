@@ -1,6 +1,6 @@
-package com.emeraldhieu.listener;
+package com.emeraldhieu.observer;
 
-import static com.emeraldhieu.listener.EndpointDefinitionRegistryEvent.Type.*;
+import static com.emeraldhieu.observer.EndpointDefinitionRegistryEvent.Type.*;
 
 public class EndpointDefinitionRegistry implements Registry {
 

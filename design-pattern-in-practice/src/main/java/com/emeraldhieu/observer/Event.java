@@ -1,4 +1,4 @@
-package com.emeraldhieu.listener;
+package com.emeraldhieu.observer;
 
 public interface Event<H extends EventHandler> {
 

@@ -1,6 +1,4 @@
-package com.emeraldhieu.listener;
-
-import static com.emeraldhieu.listener.EndpointDefinitionRegistryEvent.Type.*;
+package com.emeraldhieu.observer;
 
 public class EndpointDefinitionRegistryEvent implements Event<EndpointDefinitionRegistryEventHandler> {
 
@@ -12,9 +10,9 @@ public class EndpointDefinitionRegistryEvent implements Event<EndpointDefinition
 
     @Override
     public void dispatch(EndpointDefinitionRegistryEventHandler eventHandler) {
-        if (type == REGISTERED) {
+        if (type == Type.REGISTERED) {
             eventHandler.onEndpointRegistered();
-        } else if (type == UNREGISTERED) {
+        } else if (type == Type.UNREGISTERED) {
             eventHandler.onEndpointUnregistered();
         }
     }
